@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_linear_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="LinearLayoutManager(1)" />
+
+            <Button
+                android:id="@+id/btn_linear_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="LinearLayoutManager(2)" />
+
+            <Button
+                android:id="@+id/btn_grid_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="GridLayoutManager(1)" />
+
+            <Button
+                android:id="@+id/btn_grid_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="GridLayoutManager(2)" />
+
+            <Button
+                android:id="@+id/btn_staggered_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="StraggeredLayoutManager(1)" />
+
+            <Button
+                android:id="@+id/btn_staggered_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="StraggeredLayoutManager(2)" />
+
+            <Button
+                android:id="@+id/btn_time_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="时间选择器" />
+
+            <Button
+                android:id="@+id/btn_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="手势开关" />
+
+            <Button
+                android:id="@+id/btn_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="音频录制" />
+
+            <Button
+                android:id="@+id/btn_playvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="播放音频" />
+            <Button
+                android:id="@+id/btn_indexBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="头部悬停+侧边索引" />
+            <Button
+                android:id="@+id/btn_playAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="播放音频+界面" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

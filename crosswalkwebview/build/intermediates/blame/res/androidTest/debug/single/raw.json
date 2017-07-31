@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/device_capabilities_api.js",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/device_capabilities_api.js"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/presentation_api.js",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/presentation_api.js"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/contacts_api.js",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/contacts_api.js"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/xwalk.pak",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/xwalk.pak"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/icudtl.dat",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/icudtl.dat"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/wifidirect_api.js",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/wifidirect_api.js"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/messaging_api.js",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/messaging_api.js"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/raw/launch_screen_api.js",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/raw/launch_screen_api.js"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable-v21/button_borderless_compat.xml",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable-v21/button_borderless_compat.xml"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable-v21/button_compat.xml",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable-v21/button_compat.xml"
+    }
+]

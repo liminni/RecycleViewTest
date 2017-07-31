@@ -1,0 +1,56 @@
+<html>
+<meta charset="UTF-8">
+<head>
+    <title>js交互android</title>
+    <script type="text/javascript">
+
+    function postStr(){
+
+
+        <!--var v = document.getElementById("text").value + document.getElementById("text1").value;-->
+    	<!--document.getElementById("textTime").value = v;-->
+
+        demo.timeSelecor(document.getElementById("text").value, document.getElementById("text1").value);
+    }
+    function selectStr(message){ 
+     document.getElementById("textTime").value = message; 
+    }
+   function checkUpdate(){
+        var rtn = demo.testMethod("11", "22");
+        document.getElementById("text2").value=rtn;
+     <!--demo.checkVersionUpdate(document.getElementById("downurl").value);-->
+   }
+   function showValue(){
+     demo.startRecodeVoice();
+   }
+   function returnSmartGo(){
+      var rtn = demo.getValue();
+     document.getElementById("textShow").value=rtn;
+     alert(rtn);
+   }
+   function recodeVoice(){
+     demo.startRecodeVoice();
+   }
+   function fingerLogin(){
+     demo.fingerLogin();
+   }
+</script>
+</head>
+<body>
+<form action="">
+    <p><div id="info" >向Android传递两个实参，并取得返回值</div></p>
+    <p><input type="text" id="text" value="实参一"/></p>
+    <p><input type="text" id="text1" value="实参二"/></p>
+    <p><input type="text" id="text2" value="返回值"/></p>
+    <p><input type="text" id="textTime" value="选择后的时间"/></p>
+    <p><input type="button" id="btn_post" onclick="postStr()" value="发送消息至android启动时间选择器"/></p>
+    <p><input type="text" id="downurl" value="http://211.160.73.83:8050/semp/resource/upload/app/499d9b316f184f999612aa09aab5a663/Gjdw170608.apk"/></p>
+    <p><input type="button" id="btn_post1" onclick="checkUpdate()" value="检查更新"/></p>
+    <p><input type="text" id="textShow" value="用户名and密码"/></p>
+    <p><input type="button" id="btn_post2" onclick="showValue()" value="接收单点登录的传值"/></p>
+    <p><input type="button" id="btn_post3" onclick="returnSmartGo()" value="跳转到金川门户"/></p>
+    <p><input type="button" id="btn_post4" onclick="recodeVoice()" value="语音录制"/></p>
+    <p><input type="button" id="btn_post5" onclick="fingerLogin()" value="指纹验证"/></p>
+</form>
+</body>
+</html>
