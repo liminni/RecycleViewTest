@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.Toast;
 
 import com.lixiaoming.recycleviewtest.aconstant.GloableGonfig;
@@ -99,5 +100,12 @@ public class MyJavascriptInterface {
         activity.startActivityForResult(intent,1009);
 
     }
-
+   @JavascriptInterface
+    public void openHtml(){
+       Intent intent = new Intent();
+       intent.setAction("android.intent.action.VIEW");
+       Uri content_url = Uri.parse("https://www.baidu.com/");
+       intent.setData(content_url);
+       context.startActivity(intent);
+   }
 }

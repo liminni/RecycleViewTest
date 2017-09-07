@@ -3,6 +3,7 @@ package com.lixiaoming.recycleviewtest.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_playvoice = ((Button) findViewById(R.id.btn_playvoice));
         Button btn_indexBar = ((Button) findViewById(R.id.btn_indexBar));
         Button btn_playAudio = ((Button) findViewById(R.id.btn_playAudio));
+        Button btn_open = ((Button) findViewById(R.id.btn_open));
 
         btn_linear_1.setOnClickListener(this);
         btn_linear_2.setOnClickListener(this);
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_playvoice.setOnClickListener(this);
         btn_indexBar.setOnClickListener(this);
         btn_playAudio.setOnClickListener(this);
+        btn_open.setOnClickListener(this);
 
         btn_time_seletor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,16 +153,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             VoiceUtil.playVoice(base64);
             break;
         case R.id.btn_indexBar:
+
+            Log.d("fate", "====:" + view.getId());
+            Log.d("fate", "====:" + getResources().getResourceEntryName(view.getId()));
+            Log.d("fate", "====:" + view.getTag());
             intent = new Intent(mContext, XingbiaoActivity.class);
             startActivity(intent);
             break;
         case R.id.btn_playAudio:
-            intent = new Intent(mContext,PlayAudioActivity.class);
-//            String audioPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator+"CLANNAD-樱花飞雪.mp3";
-//            String audioPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator+"playCommit.amr";
+            intent = new Intent(mContext, PlayAudioActivity.class);
+            // String audioPath =
+            // Environment.getExternalStorageDirectory().getAbsolutePath() +
+            // File.separator+"CLANNAD-樱花飞雪.mp3";
+            // String audioPath =
+            // Environment.getExternalStorageDirectory().getAbsolutePath() +
+            // File.separator+"playCommit.amr";
             String audioPath = "http://172.20.96.103:8080/bowei_audio_img/GuNsPoAwmBCKteo.m4a";
 
-            intent.putExtra("audioPath",audioPath);
+            intent.putExtra("audioPath", audioPath);
+            startActivity(intent);
+            break;
+        case R.id.btn_open:
+              intent = new Intent();
+            intent.setAction("android.intent.action.VIEW");
+//            Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/theme/testDownload.html");
+            Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa");
+            intent.setData(content_url);
             startActivity(intent);
             break;
         }

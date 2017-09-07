@@ -40,6 +40,7 @@ public class TestJSActivity extends AppCompatActivity {
         webView.addJavascriptInterface(javascriptInterface,"demo");
         webView.addJavascriptInterface(javascriptInterface,"test");
         webView.addJavascriptInterface(javascriptInterface,"NativeInterface");
+        webView.addJavascriptInterface(javascriptInterface,"SysBrowser");
 //        webView.loadUrl("file:///android_asset/jsAndroid.html");
 
         webView.setResourceClient(new XWalkResourceClient(webView) {
@@ -84,7 +85,9 @@ public class TestJSActivity extends AppCompatActivity {
                 super.onPageLoadStopped(view, url, status);
             }
         });
-        webView.load("file:///android_asset/jsAndroid.html",null);
+//        webView.load("file:///android_asset/jsAndroid.html",null);
+        webView.load("http://cmccdi.chinamobile.com/cmcc_dism_webapp/theme/testDownload.html",null);
+//        webView.load("http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa",null);
 
     }
 //    @Override

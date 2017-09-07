@@ -8,12 +8,12 @@
         "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable/color_picker_border.xml"
     },
     {
-        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable/button_compat_shape.xml",
-        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable/button_compat_shape.xml"
-    },
-    {
         "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable/bubble_arrow_up.png",
         "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable/bubble_arrow_up.png"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable/button_compat_shape.xml",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable/button_compat_shape.xml"
     },
     {
         "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable/dropdown_popup_background_up.9.png",

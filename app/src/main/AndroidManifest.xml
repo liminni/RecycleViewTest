@@ -43,8 +43,10 @@
         <activity android:name=".activity.WebPTestActivity" />
         <activity android:name=".activity.TestPopWindowActivity" />
         <activity android:name=".activity.XingbiaoActivity" />
-        <activity android:name=".activity.PlayAudioActivity"
-            android:theme="@style/Translucent"/>
+        <activity
+            android:name=".activity.PlayAudioActivity"
+            android:theme="@style/Translucent" />
+        <activity android:name=".activity.TestWebviewActivity"></activity>
     </application>
 
 </manifest>
