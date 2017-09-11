@@ -9,8 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.lixiaoming.recycleviewtest.R;
 import com.lixiaoming.recycleviewtest.aconstant.GloableGonfig;
 import com.lixiaoming.recycleviewtest.voice.MediaRecorderActivity;
@@ -26,6 +32,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Context mContext;
 
     private Activity activity;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+    private ImageView iv;
 
     // WheelMain wheelMain;
     //
@@ -45,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mContext = this;
         activity = this;
         initView();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initView() {
@@ -67,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_indexBar = ((Button) findViewById(R.id.btn_indexBar));
         Button btn_playAudio = ((Button) findViewById(R.id.btn_playAudio));
         Button btn_open = ((Button) findViewById(R.id.btn_open));
+        Button btn_glide_okhttp = ((Button) findViewById(R.id.btn_glide_okhttp));
+        iv = ((ImageView) findViewById(R.id.iv));
 
         btn_linear_1.setOnClickListener(this);
         btn_linear_2.setOnClickListener(this);
@@ -80,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_indexBar.setOnClickListener(this);
         btn_playAudio.setOnClickListener(this);
         btn_open.setOnClickListener(this);
+        btn_glide_okhttp.setOnClickListener(this);
 
         btn_time_seletor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,80 +125,83 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
-        case btn_linear_1:
-            intent = new Intent(mContext, LinearLayoutManageActivity.class);
-            intent.putExtra("orientation", "horizonal");
-            startActivity(intent);
-            break;
-        case R.id.btn_linear_2:
-            intent = new Intent(mContext, LinearLayoutManageActivity.class);
-            intent.putExtra("orientation", "vertical");
-            startActivity(intent);
-            break;
-        case R.id.btn_grid_1:
-            intent = new Intent(mContext, GridLayoutManagerActivity.class);
-            intent.putExtra("isUseDivider", "yes");
-            startActivity(intent);
-            break;
-        case R.id.btn_grid_2:
-            intent = new Intent(mContext, GridLayoutManagerActivity.class);
-            intent.putExtra("isUseDivider", "no");
-            startActivity(intent);
-            break;
-        case R.id.btn_staggered_1:// 固定行或者固定列
-            intent = new Intent(mContext, TestPopWindowActivity.class);
-            intent.putExtra("fixedHeight", "fixed");
-            startActivity(intent);
-            break;
-        case R.id.btn_staggered_2:// item项的高度随机
-            // intent = new Intent(mContext,
-            // StaggeredLayoutManagerActivity.class);
-            // intent.putExtra("fixedHeight", "unfixed");
-            // intent = new Intent(mContext, FingerLoginActivity.class);
-            // startActivityForResult(intent, 1008);
-            intent = new Intent(mContext, TestJSActivity.class);
-            startActivity(intent);
-            break;
-        case R.id.btn_finger:
-            intent = new Intent(mContext, StartFingerActivity.class);
-            startActivityForResult(intent, 1009);
-            break;
-        case R.id.btn_voice:
-            intent = new Intent(mContext, MediaRecorderActivity.class);
-            startActivity(intent);
-            break;
-        case R.id.btn_playvoice:
-            VoiceUtil.playVoice(base64);
-            break;
-        case R.id.btn_indexBar:
+            case btn_linear_1:
+                intent = new Intent(mContext, LinearLayoutManageActivity.class);
+                intent.putExtra("orientation", "horizonal");
+                startActivity(intent);
+                break;
+            case R.id.btn_linear_2:
+                intent = new Intent(mContext, LinearLayoutManageActivity.class);
+                intent.putExtra("orientation", "vertical");
+                startActivity(intent);
+                break;
+            case R.id.btn_grid_1:
+                intent = new Intent(mContext, GridLayoutManagerActivity.class);
+                intent.putExtra("isUseDivider", "yes");
+                startActivity(intent);
+                break;
+            case R.id.btn_grid_2:
+                intent = new Intent(mContext, GridLayoutManagerActivity.class);
+                intent.putExtra("isUseDivider", "no");
+                startActivity(intent);
+                break;
+            case R.id.btn_staggered_1:// 固定行或者固定列
+                intent = new Intent(mContext, TestPopWindowActivity.class);
+                intent.putExtra("fixedHeight", "fixed");
+                startActivity(intent);
+                break;
+            case R.id.btn_staggered_2:// item项的高度随机
+                // intent = new Intent(mContext,
+                // StaggeredLayoutManagerActivity.class);
+                // intent.putExtra("fixedHeight", "unfixed");
+                // intent = new Intent(mContext, FingerLoginActivity.class);
+                // startActivityForResult(intent, 1008);
+                intent = new Intent(mContext, TestJSActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_finger:
+                intent = new Intent(mContext, StartFingerActivity.class);
+                startActivityForResult(intent, 1009);
+                break;
+            case R.id.btn_voice:
+                intent = new Intent(mContext, MediaRecorderActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_playvoice:
+                VoiceUtil.playVoice(base64);
+                break;
+            case R.id.btn_indexBar:
 
-            Log.d("fate", "====:" + view.getId());
-            Log.d("fate", "====:" + getResources().getResourceEntryName(view.getId()));
-            Log.d("fate", "====:" + view.getTag());
-            intent = new Intent(mContext, XingbiaoActivity.class);
-            startActivity(intent);
-            break;
-        case R.id.btn_playAudio:
-            intent = new Intent(mContext, PlayAudioActivity.class);
-            // String audioPath =
-            // Environment.getExternalStorageDirectory().getAbsolutePath() +
-            // File.separator+"CLANNAD-樱花飞雪.mp3";
-            // String audioPath =
-            // Environment.getExternalStorageDirectory().getAbsolutePath() +
-            // File.separator+"playCommit.amr";
-            String audioPath = "http://172.20.96.103:8080/bowei_audio_img/GuNsPoAwmBCKteo.m4a";
+                Log.d("fate", "====:" + view.getId());
+                Log.d("fate", "====:" + getResources().getResourceEntryName(view.getId()));
+                Log.d("fate", "====:" + view.getTag());
+                intent = new Intent(mContext, XingbiaoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_playAudio:
+                intent = new Intent(mContext, PlayAudioActivity.class);
+                // String audioPath =
+                // Environment.getExternalStorageDirectory().getAbsolutePath() +
+                // File.separator+"CLANNAD-樱花飞雪.mp3";
+                // String audioPath =
+                // Environment.getExternalStorageDirectory().getAbsolutePath() +
+                // File.separator+"playCommit.amr";
+                String audioPath = "http://172.20.96.103:8080/bowei_audio_img/GuNsPoAwmBCKteo.m4a";
 
-            intent.putExtra("audioPath", audioPath);
-            startActivity(intent);
-            break;
-        case R.id.btn_open:
-              intent = new Intent();
-            intent.setAction("android.intent.action.VIEW");
+                intent.putExtra("audioPath", audioPath);
+                startActivity(intent);
+                break;
+            case R.id.btn_open:
+                intent = new Intent();
+                intent.setAction("android.intent.action.VIEW");
 //            Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/theme/testDownload.html");
-            Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa");
-            intent.setData(content_url);
-            startActivity(intent);
-            break;
+                Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa");
+                intent.setData(content_url);
+                startActivity(intent);
+                break;
+            case R.id.btn_glide_okhttp:
+                Glide.with(mContext).load("https://yqcxcjz.taiji.com.cn/file//upload/news/news-20170910210917369947.jpg").into(iv);
+                break;
         }
 
     }
@@ -477,33 +498,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-        case 1008:
-            if (resultCode == RESULT_OK) {
-                // Toast.makeText(mContext, "指纹验证成功。。。。。。",
-                // Toast.LENGTH_LONG).show();
-                Log.d("fate", "指纹验证成功");
-            } else if (resultCode == RESULT_CANCLE) {
-                // Toast.makeText(mContext, "取消了指纹验证",
-                // Toast.LENGTH_LONG).show();
-                Log.d("fate", "取消了指纹验证");
-            } else if (resultCode == RESULT_FAIL) {
-                // Toast.makeText(mContext, "指纹验证失败", Toast.LENGTH_LONG).show();
-                Log.d("fate", "指纹验证失败");
-            }
-            break;
-        case 1009:
-            String info = "";
-            if (data != null) {
-                info = data.getStringExtra("info");
-            }
-            if (resultCode == SUCCESS) {
-                // 若有指纹，则需要绑定用户信息（用户名，密码）
-                Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
-            } else if (resultCode == FAIL) {
-                Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
-            }
-            break;
+            case 1008:
+                if (resultCode == RESULT_OK) {
+                    // Toast.makeText(mContext, "指纹验证成功。。。。。。",
+                    // Toast.LENGTH_LONG).show();
+                    Log.d("fate", "指纹验证成功");
+                } else if (resultCode == RESULT_CANCLE) {
+                    // Toast.makeText(mContext, "取消了指纹验证",
+                    // Toast.LENGTH_LONG).show();
+                    Log.d("fate", "取消了指纹验证");
+                } else if (resultCode == RESULT_FAIL) {
+                    // Toast.makeText(mContext, "指纹验证失败", Toast.LENGTH_LONG).show();
+                    Log.d("fate", "指纹验证失败");
+                }
+                break;
+            case 1009:
+                String info = "";
+                if (data != null) {
+                    info = data.getStringExtra("info");
+                }
+                if (resultCode == SUCCESS) {
+                    // 若有指纹，则需要绑定用户信息（用户名，密码）
+                    Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
+                } else if (resultCode == FAIL) {
+                    Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Main Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
     // public void showTimeDialog() {
     // LayoutInflater inflater1 = LayoutInflater.from(MainActivity.this);
