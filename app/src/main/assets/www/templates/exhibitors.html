@@ -1,0 +1,97 @@
+<ion-view id="exhibitors">
+  <ion-header-bar class="bar-royal">
+    <button class="button button-clear" ng-click="$ionicGoBack()">
+        <i class="icon ion-ios-arrow-back"></i>
+      </button>
+    <h2 class="title">
+        <ul>
+          <li ng-class='{active:tipIndex==$index}'
+          ng-repeat="tip in ['展商介绍','展品介绍']"
+          ng-click="changeTip($index)">{{tip}}</li>
+
+        </ul>
+      </h2>
+
+  </ion-header-bar>
+  <ion-content class="has-header" scroll="false" >
+    <ion-slide-box ng-if="item" style="height:100%" show-pager="false" on-slide-changed="onSlideChanged($index)" delegate-handle="exhibitor">
+      <ion-slide >
+        <ion-content has-bouncing=true class="top0" >
+          <div class="zsTit" >
+              <h2>{{item.name}}</h2>
+            <div class="">
+              <span ng-click="attentionExhibit(attentionState.state)"><i class="icon ion-heart" ng-class="{'active':attentionState.state==1}"></i>{{attentionState.name}}</span>
+              <span ng-click="goMessage()"><i class="icon icon-pen"></i>留言(<b>{{item.mescount}}</b>)</span>
+            </div>
+            <p>{{item.introduction}}</p>
+          </div>
+          <div class="zsDetail">
+            <ion-item class="item-text-wrap">
+              <span>展区</span>
+              <span>{{item.area}}</span>
+            </ion-item>
+            <ion-item class="item-text-wrap hasMap" close-my-popup ng-click="showMap()">
+              <span>展位号</span>
+              <span>{{item.boothnumber}}<b></b> <i class="icon ion-ios-location"></i>
+            </ion-item>
+            <ion-item class="item-text-wrap hasMap" close-my-popup ng-click="showMap()">
+              <span>行业</span>
+              <span>{{item.industry}}</span>
+            </ion-item>
+            <ion-item class="item-text-wrap">
+              <span>联系方式</span>
+              <span>
+                <a ng-click="callNumber(item.phone)">{{item.phone}}</a>
+                <i class="icon ion-arrow-down-c"></i>
+                  <i class="icon ion-ios-telephone"></i>
+              </span>
+            </ion-item>
+            <ion-item class="item-text-wrap">
+              <span>地址</span>
+              <span>{{item.address}}</span>
+            </ion-item>
+            <ion-item class="item-text-wrap">
+              <span>网址</span>
+              <span>{{item.website}}</span>
+            </ion-item>
+            <ion-item class="item-text-wrap">
+              <span>备注</span>
+              <span>{{item.remark}}</span>
+            </ion-item>
+          </div>
+        </ion-content>
+        <div class="addButton">
+          <i class="icon ion-plus"  ng-click="showAdd()"></i>
+          <span ng-show="!isAdd" ng-click="addMyVisitPlant()"><i class="icon icon-add"></i></span>
+          <span ng-show="!isAdd" ng-click='goVisitPlant()'>5</span>
+        </div>
+      </ion-slide>
+      <ion-slide style="background:#ecedee;" auto-height>
+      <div class="item-input-wrapper" ng-click="showSearchModal()">
+        <i class="icon ion-ios-search placeholder-icon" ></i>
+        <p >搜索</p>
+      </div>
+        <ion-content id="exhibitors_main" scroll="false" style="top:44px;bottom:-44px">
+          <ion-scroll class="exhibitors_left" scrollbar-x="false" scrollbar-y="false" has-bouncing=true>
+            <ion-item ng-class='{active:activeItem==$index}' class="item-text-wrap" ng-click="changeItem($index,item.id)" ng-repeat='item in industryArr'>
+              <span>{{item.title}}</span>
+            </ion-item>
+          </ion-scroll>
+          <ion-scroll class="exhibitors_right" scrollbar-x="false" scrollbar-y="false" has-bouncing=true lazy-scroll delegate-handle="exhibitorListScroll">
+            <ion-list>
+              <a ng-click="goExhibitDetailById(item.id)" ng-repeat="item in exhibit">
+                <div style="position:relative">
+                  <img image-lazy-src= {{item.logo}} image-lazy-loader="ios" onerror="javascript:this.src='./img/erorrimg.png'">
+                </div>
+                <span>{{item.title}}</span>
+              </a>
+              <div class="nodata" ng-if="exhibit.length<=0">
+                    暂无数据
+              </div>
+            </ion-list>
+          </ion-scroll>
+        </ion-content>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

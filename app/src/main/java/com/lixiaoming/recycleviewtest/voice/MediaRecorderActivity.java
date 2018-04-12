@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lixiaoming.recycleviewtest.R;
-import com.lixiaoming.recycleviewtest.utils.Base64Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -187,7 +186,7 @@ public class MediaRecorderActivity extends AppCompatActivity implements View.OnC
                 stopRecord();
                 // TODO 给js返回录制后的base64
                 try {
-                    base64 = Base64Util.ioToBase64(audioFile.getAbsolutePath());
+//                    base64 = Base64Util.ioToBase64(audioFile.getAbsolutePath());
                     Log.d("fate", "base64:" + base64);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -226,8 +225,8 @@ public class MediaRecorderActivity extends AppCompatActivity implements View.OnC
             String fileString = Environment.getExternalStorageDirectory().getAbsolutePath()
                     + "/data/files/player35.amr";
             try {
-                String base64Str = Base64Util.ioToBase64(audioFile.getAbsolutePath());
-                Base64Util.base64ToIo(base64Str, fileString);
+//                String base64Str = Base64Util.ioToBase64(audioFile.getAbsolutePath());
+//                Base64Util.base64ToIo(base64Str, fileString);
             } catch (Exception e) {
                 e.printStackTrace();
             }

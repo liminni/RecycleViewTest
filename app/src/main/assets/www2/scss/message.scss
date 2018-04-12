@@ -1,0 +1,84 @@
+#message{
+  .list{
+    .item{
+      padding:10px;
+      border-color: #BBB;
+      div:nth-of-type(1){
+        @include display-flex;
+        .img{
+          display: block;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          border:1px solid #eee;
+          @include border-radius(50%);
+        }
+        div{
+          @include flex(1);
+          @include display-flex;
+          @include flex-direction(column);
+          margin-left: 10px;
+          h2{
+            font-size: 14px;
+            color:#000;
+            line-height: 20px;
+          }
+          p{
+            font-size: 12px;
+            color:#B8B4B8;
+            line-height: 15px;
+          }
+        }
+      }
+      div:nth-of-type(2){
+          margin:21px 20px 0 54px;
+          word-break: break-all;
+          white-space: pre-wrap;
+          font-size: 14px;
+          span{
+            color:#3F51B5;
+          }
+      }
+    }
+  }
+  .bar-footer {
+    height: auto;
+    min-height: 44px;
+    background: #fff;
+    @include display-flex;
+    @include align-items(center);
+    border-top:1px solid #BBBBBB;
+    textarea {
+      @include flex(1);
+      height: 30px;
+      margin: 0 6px 0 11px;
+      border: 1px solid #BFBFBF;
+      background: #F7F5F5;
+      line-height: 22px;
+      text-indent: 12px;
+      @include border-radius(5px);
+      @include placeholder(#BFBFBF,12px);
+      resize: none;
+    }
+
+    div {
+      width: 48px;
+      margin: 0 10px;
+      @include display-flex;
+      @include align-items(center);
+      @include justify-content(center);
+      color: #B8B4B8;
+      font-size: 20px;
+
+      span {
+        font-size: 14px;
+        margin-left: 2px;
+      }
+    }
+    div.setButton {
+      font-size: 14px;
+      color: #000;
+    }
+  }
+}

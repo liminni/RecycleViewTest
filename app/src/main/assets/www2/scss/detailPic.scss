@@ -1,0 +1,117 @@
+#detailPic {
+  .slider-slide {
+    background: #000;
+
+    .picBox {
+      height: 100%;
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+
+      h1 {
+        color: #fff;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      p {
+        color: #A3A3A3;
+      }
+
+      p.white {
+        color: #fff;
+        margin-top: 12px;
+        line-height: 24px;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+      }
+
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+
+  .slider-pager {
+    span {
+      color: #fff;
+    }
+  }
+
+  .bar-footer {
+    height: auto;
+    min-height: 44px;
+    background: #242324;
+    @include display-flex;
+    @include align-items(center);
+
+    textarea {
+      @include flex(1);
+      height: 30px;
+      margin: 0 6px 0 11px;
+      border: 1px solid #BFBFBF;
+      background: #333232;
+      line-height: 22px;
+      text-indent: 12px;
+      @include border-radius(5px);
+      @include placeholder(#BFBFBF,12px);
+      resize: none;
+    }
+
+    div {
+      width: 48px;
+      margin: 0 10px;
+      @include display-flex;
+      @include align-items(center);
+      @include justify-content(center);
+      color: #B8B4B8;
+      font-size: 20px;
+
+      span {
+        font-size: 14px;
+        margin-left: 2px;
+      }
+    }
+    div.setButton {
+      font-size: 14px;
+      color: #000;
+    }
+  }
+}
+@keyframes height150 {
+  from {
+    height: 30px;
+  }
+
+  to {
+    height: 150px;
+  }
+}
+@keyframes height30 {
+  from {
+    height: 150px;
+  }
+
+  to {
+    height: 30px;
+  }
+}
+
+.height150 {
+  @include animation(height150);
+  @include animation-duration(.5s);
+  @include animation-fill-mode(forwards);
+}
+
+.height30 {
+  @include animation(height30);
+  @include animation-duration(.5s);
+  @include animation-fill-mode(forwards);
+}

@@ -167,7 +167,69 @@
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:id="@+id/iv"/>
+                android:id="@+id/iv"
+                android:visibility="gone"/>
+            <Button
+            android:id="@+id/btn_open_router"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_selector"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="测试使用路由机制跳转界面"/>
+            <Button
+                android:id="@+id/btn_test_grid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="测试Gridlayout"/>
+
+            <Button
+                android:id="@+id/btn_listShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="工商联经济客户端列表显示"/>
+            <Button
+                android:id="@+id/btn_rsa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="RSA非对称加密"/>
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="新华保险单点登录"/>
+            <Button
+                android:id="@+id/btn_viewPager_Fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="ViewPager+Fragment+RecycleView"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

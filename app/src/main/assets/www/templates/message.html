@@ -1,0 +1,34 @@
+<ion-view id="message">
+  <ion-header-bar class="bar-royal">
+    <button class="button button-clear" ng-click="$ionicGoBack()">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h2 class="title">留言</h2>
+  </ion-header-bar>
+  <ion-content class="has-header has-footer" has-bouncing=true delegate-handle="messageScroll">
+    <ion-refresher ng-if="refresher" on-refresh="doRefresh()" pulling-text="下拉刷新..." refreshing-text="正在加载..." spinner="spiral" immediate-check="false"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-text-wrap" ng-repeat="item in items">
+        <div>
+          <p>
+            <span>{{item.audienceName}}</span>
+            <span ng-if="item.subtitle">回复<i>{{item.subtitle}}</i></span>
+          </p>
+          <span>{{item.createTimes}}</span>
+        </div>
+        <p>{{item.message}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="loadMore()" distance="1%" spinner="spiral" immediate-check="false" ng-if="hasData"></ion-infinite-scroll>
+  </ion-content>
+  <ion-footer-bar>
+
+      <label class="item-input-wrapper">
+        <input  type="text" id="setText" fixed-header placeholder="请填写留言信息" ng-model="message.content" value="message.content">
+      </label>
+      <button  class="button button-positive" ng-click="setMessage()" >
+        发送
+      </button>
+
+  </ion-footer-bar>
+</ion-view>

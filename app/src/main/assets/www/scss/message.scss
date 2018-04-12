@@ -1,0 +1,52 @@
+#message{
+  .list{
+    .item{
+      div{
+        width: 100%;
+        @include display-flex;
+        @include justify-content(space-between);
+        margin-bottom: 8px;
+        p{
+          @include flex(1);
+          span{
+            font-size:17px;
+            color:#030303;
+            &:nth-of-type(2){
+              color:#97969B;
+              i{
+                color:#6679A8;
+                padding-left: 5px;
+              }
+            }
+          }
+        }
+        span{
+          font-size:15px;
+          color:#8f8e94;
+        }
+      }
+      p{
+        font-size:15px;
+        color:#51565c;
+      }
+    }
+  }
+  .bar-footer{
+    .item-input-wrapper{
+      background:#ecedee;
+      margin:2px 12px 0 12px;
+      height: 30px;
+      input{
+        width: 100%;
+        height: 100%;
+        background:#ecedee;
+        font-size:14px;
+        color:#8e8e93;
+      }
+    }
+    button{
+      width: 51px;
+      right:10px;
+    }
+  }
+}

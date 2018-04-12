@@ -1,0 +1,27 @@
+<ion-modal-view id="hzSearch">
+  <ion-header-bar class="item-input-inset bar-royal">
+    <label class="item-input-wrapper" style="background:#fff">
+      <i class="icon ion-ios-search placeholder-icon" style="font-size:20px"></i>
+      <input type="search" auto-focus search-input="searchInput" placeholder="请输入展商名称搜索" ng-change="searchExhibit(searchCont.key)"  ng-model="searchCont.key" value="searchCont.key">
+    </label>
+    <button class="button button-clear" ng-click="colseSearchModal()">
+      取消
+    </button>
+  </ion-header-bar>
+  <ion-content has-bouncing=true lazy-scroll>
+    <ion-list>
+      <ion-item style="text-align:center" ng-if="selectExhibit.length<=0&&showNoData">搜索数据暂无</ion-item>
+      <a ng-repeat="item in selectExhibit" ng-click="exhibitorShow(item.id)">
+        <div>
+          <img image-lazy-src="{{item.logo}}" image-lazy-loader="ios" alt="" onerror="javascript:this.src='./img/erorrimg.png'">
+        </div>
+        <div>
+          <p>{{item.title}}</p>
+          <p>展位号:{{item.boothnumber}}</p>
+          <p>行业:{{item.industry}}</p>
+        </div>
+        <div></div>
+      </a>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

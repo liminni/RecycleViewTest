@@ -1,0 +1,44 @@
+<ion-view id='detailPic'  hide-nav-bar='true' hide-back-button="true">
+  <ion-header-bar class="bar bar-royal" style="background-image:none">
+    <button class="button button-icon ion-ios-arrow-back"></button>
+    <h2 class="title">信息资讯</h2>
+    <button class="button button-icon ion-ios-more" ng-click=showMore()></button>
+  </ion-header-bar>
+
+  <ion-content scroll="false"  class="has-header has-footer" close-popup-back-drop>
+    <ion-slide-box style="height:100%;width:100%" show-pager='true' delegate-handle="picBox">
+      <ion-slide ng-repeat="item in detailList.images">
+        <ion-content class="picBox" has-bouncing='true'>
+          <h1>{{detailList.title}}</h1>
+          <ion-item class="detailInfo">
+            <div>
+
+              <span>{{detailList.source}}</span>
+              <b class="lines"></b>
+              <span>
+                <i class="icon icon-eye-off"></i>
+                <b>{{detailList.browseNum}}</b>
+              </span>
+            </div>
+            <span>{{detailList.publishTime}}</span>
+          </ion-item>
+          <img ng-src='{{item.imageUrl}}' alt="">
+          <span class="imgTitle">{{item.title}}</span>
+          <p class="white" ng-bind-html='item.remark'></p>
+        </ion-content>
+      </ion-slide>
+  </ion-slide-box>
+  </ion-content>
+  <div class="bar bar-footer">
+    <textarea  placeholder="谈谈见解" auto-height></textarea>
+    <div ng-if="!textareaFocus">
+      <img src="./img/message.png" alt="">
+      <span>{{detailList.messageNum}}</span>
+    </div>
+    <div ng-if="!textareaFocus">
+      <img src="./img/star.png" alt="">
+      <span>{{detailList.fabulousNum}}</span>
+    </div>
+    <div ng-if="textareaFocus" class="setButton">发送</div>
+  </div>
+</ion-view>

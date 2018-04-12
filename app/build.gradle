@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.lixiaoming.recycleviewtest"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -36,10 +36,19 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':crosswalkwebview')
     compile 'com.wanjian:cockroach:0.0.5'
-    /**头部悬停+侧边索引栏*/
+    /** 头部悬停+侧边索引栏   */
     compile 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
-    //使用OkHttp 3.x作为请求方式的glide
-    compile 'com.squareup.okhttp:okhttp:2.7.5'
-    compile 'com.github.bumptech.glide:okhttp-integration:1.3.1'
-    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    //使用OkHttp/okhttp3 作为请求方式的glide
+    //第一种：使用okhttp去协助glide加载https资源，由于同时依赖okhttp和okhttp3互不影响，所以我们可以在请求数据的时候使用okhttp3然后使用glide请求图片的时候去使用okhttp
+    //    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    //    compile 'com.github.bumptech.glide:okhttp-integration:1.3.1'
+    //    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    //第二种：使用okhttp3协助glide去访问https的图片资源
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.5.0@aar'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile project(':pulllibrary')
+    compile files('libs/my-image-loader.jar')
+    compile files('libs/sun.misc.BASE64Decoder.jar')
+    compile files('libs/gson-2.6.2.jar')
 }

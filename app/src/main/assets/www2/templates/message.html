@@ -1,0 +1,30 @@
+<ion-view id="message" view-title="评论">
+    <ion-content class="has-header has-footer" has-bouncing='true'>
+        <ion-list>
+          <ion-item ng-repeat="item in [1,2,3,4]">
+            <div>
+              <span class="img">头像</span>
+
+              <div>
+                <h2>CCCCC</h2>
+                <p><span>北京市</span><span>19小时前</span></p>
+              </div>
+            </div>
+            <div class="messageContent">赞！！／／<span>CCCCC：</span>在第四个国家扶贫日即将到来之际，中共中央总书记、国家主席、中央军委主席习近平对脱贫攻坚工作作出重要指示强调，社会主义是干出来的。脱贫攻坚是硬仗中的硬仗，必须付出百倍努力。
+            </div>
+          </ion-item>
+        </ion-list>
+    </ion-content>
+    <div class="bar bar-footer">
+      <textarea  placeholder="谈谈见解" auto-height></textarea>
+      <div ng-if="!textareaFocus">
+        <i class="icon ion-chatbox-working"></i>
+        <span>662</span>
+      </div>
+      <div ng-if="!textareaFocus">
+        <i class="icon ion-chatbox-working"></i>
+        <span>662</span>
+      </div>
+      <div ng-if="textareaFocus" class="setButton">发送</div>
+    </div>
+</ion-view>

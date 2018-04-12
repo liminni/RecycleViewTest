@@ -1,0 +1,5 @@
+<ion-slide-box  delegate-handle="exhibitNav" show-pager="true" pager-click="changePage(index)">
+  <ion-slide ng-repeat="img in imgArr">
+      <img ng-src="{{img.imageurl}}" alt="" onerror="javascript:this.src='./img/erorrimg.png'">
+  </ion-slide>
+</ion-slide-box>

@@ -1,8 +1,12 @@
 package com.lixiaoming.recycleviewtest.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,17 +17,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.lixiaoming.recycleviewtest.R;
 import com.lixiaoming.recycleviewtest.aconstant.GloableGonfig;
+import com.lixiaoming.recycleviewtest.utils.DESUtils;
+import com.lixiaoming.recycleviewtest.utils.OpenOtherAppUtil;
 import com.lixiaoming.recycleviewtest.voice.MediaRecorderActivity;
 import com.lixiaoming.recycleviewtest.voice.VoiceUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import static com.lixiaoming.recycleviewtest.R.id.btn_linear_1;
 
@@ -32,11 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Context mContext;
 
     private Activity activity;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
     private ImageView iv;
 
     // WheelMain wheelMain;
@@ -57,9 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mContext = this;
         activity = this;
         initView();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
     private void initView() {
@@ -83,6 +81,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_playAudio = ((Button) findViewById(R.id.btn_playAudio));
         Button btn_open = ((Button) findViewById(R.id.btn_open));
         Button btn_glide_okhttp = ((Button) findViewById(R.id.btn_glide_okhttp));
+        Button btn_open_router = ((Button) findViewById(R.id.btn_open_router));
+        Button btn_test_grid = ((Button) findViewById(R.id.btn_test_grid));
+        Button btn_listShow = ((Button) findViewById(R.id.btn_listShow));
+        Button btn_rsa = ((Button) findViewById(R.id.btn_rsa));
+        Button btn_login = ((Button) findViewById(R.id.btn_login));
+        Button btn_viewPager_Fragment = ((Button) findViewById(R.id.btn_viewPager_Fragment));
         iv = ((ImageView) findViewById(R.id.iv));
 
         btn_linear_1.setOnClickListener(this);
@@ -98,6 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_playAudio.setOnClickListener(this);
         btn_open.setOnClickListener(this);
         btn_glide_okhttp.setOnClickListener(this);
+        btn_open_router.setOnClickListener(this);
+        btn_test_grid.setOnClickListener(this);
+        btn_listShow.setOnClickListener(this);
+        btn_rsa.setOnClickListener(this);
+        btn_login.setOnClickListener(this);
+        btn_viewPager_Fragment.setOnClickListener(this);
 
         btn_time_seletor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,12 +210,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn_glide_okhttp:
+                iv.setVisibility(View.VISIBLE);
                 Glide.with(mContext).load("https://yqcxcjz.taiji.com.cn/file//upload/news/news-20170910210917369947.jpg").into(iv);
+                break;
+            case R.id.btn_open_router:
+                openOtherApp("com.smartdot.mobile.routertest",mContext);
+                break;
+            case R.id.btn_test_grid:
+                intent = new Intent(mContext,TextGridlayoutActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_listShow:
+                intent = new Intent(mContext,FICListActivity.class);
+                startActivity(intent);
+                String url = "http://192.168.180.136/file//upload/upload/comment/comment-20171027141514186691.xls";
+                String s = url.substring(url.lastIndexOf("/")+1);
+                Log.d("fate",s);
+                break;
+            case R.id.btn_rsa:
+                startActivity(new Intent(mContext,RSAActivity.class));
+                break;
+            case R.id.btn_login:
+                //使用工具类中的启动第三方app的方法
+                OpenOtherAppUtil.openOtherApp(mContext,"com.smartdot.mobile.nci","com.smartdot.mobile.nci.activity.StartActivity");
+//                String str = "Qw1srGtCICgGtjmUbtJS3MJZ0chQlWckkoMDJqf+SrIeunVCaleWVs+4Vy1e fD0tJRBLf6uoloJ4XC8OPHvEXw==";
+//                DESUtils.decryptDES(str);
+                break;
+            case R.id.btn_viewPager_Fragment:
+                startActivity(new Intent(mContext,ViewPagerFragmentRecycleviewActivity.class));
                 break;
         }
 
     }
 
+
+    /**
+     * 在一个程序中打开另一个程序
+     * @param packageName  包启动的app 的包名
+     * @param context  context上下文环境
+     */
+    public static void openOtherApp(String packageName,Context context) {
+
+
+        PackageManager packageManager = context.getPackageManager();
+
+        // 通过包名获取此APP详细信息，包括Activities、services、versioncode、name等等
+        PackageInfo pi = null;
+
+        try {
+
+            pi = packageManager.getPackageInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(context, "无法打开次应用", Toast.LENGTH_LONG).show();
+        }
+
+        // 创建一个类别为CATEGORY_LAUNCHER的该包名的Intent
+        Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        resolveIntent.setPackage(pi.packageName);
+        // 通过getPackageManager()的queryIntentActivities方法遍历
+        List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0);
+
+        ResolveInfo ri = apps.iterator().next();
+        if (ri != null ) {
+
+            // 获取Activity名
+            // 这个就是我们要找的该APP的LAUNCHER的Activity[组织形式：packagename.mainActivityname]
+            String className = ri.activityInfo.name;
+            // LAUNCHER Intent
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            // 设置ComponentName参数1:packagename参数2:MainActivity路径
+            ComponentName cn = new ComponentName(packageName, className);
+            String name = DESUtils.encrypt("anlun");
+            String password = DESUtils.encrypt("anl@1234");
+            Log.d("fate","name:"+name);
+            Log.d("fate","password"+password);
+            intent.setComponent(cn);
+            intent.putExtra("condition","first");
+            intent.putExtra("userName", name);
+            intent.putExtra("password",password);
+            context.startActivity(intent);
+        }
+    }
     private int RESULT_CANCLE = -101;
 
     private int RESULT_FAIL = -102;
@@ -527,41 +614,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
     // public void showTimeDialog() {
     // LayoutInflater inflater1 = LayoutInflater.from(MainActivity.this);
     // final View timepickerview1 = inflater1.inflate(R.layout.timepicker,

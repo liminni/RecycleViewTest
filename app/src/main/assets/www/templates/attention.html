@@ -1,0 +1,23 @@
+<ion-view id="hzAttention">
+  <ion-header-bar class="item-input-inset bar-royal">
+    <button class="button button-clear" ng-click="$ionicGoBack()">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h2 class="title">我的关注</h2>
+  </ion-header-bar>
+  <ion-content has-bouncing=true lazy-scroll>
+    <ion-list>
+      <a ng-click="goExhibitor(item.id)" ng-repeat="item in items">
+        <div style="position:relative">
+            <img image-lazy-src="{{item.logo}}" image-lazy-loader="ios" alt="">
+        </div>
+        <div>
+            <p>{{item.title}}</p>
+            <p>展位号：{{item.boothnumber}}</p>
+            <p>行业：{{item.industry}}</p>
+        </div>
+        <div></div>
+      </a>
+    </ion-list>
+  </ion-content>
+</ion-view>

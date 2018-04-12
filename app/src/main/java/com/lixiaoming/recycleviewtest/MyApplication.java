@@ -7,16 +7,17 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
+import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.lixiaoming.recycleviewtest.utils.SSLSocketFactoryCompat;
-import com.squareup.okhttp.OkHttpClient;
 import com.wanjian.cockroach.Cockroach;
 
 import java.io.InputStream;
 
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Created by lixiaoming on 2017/6/22.
@@ -26,10 +27,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.COCKROACH_DEBUG) {
+        if (!BuildConfig.COCKROACH_DEBUG) {
             install();
         }
+
         Glide.get(this).register(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(getClient()));
+
     }
 
     private void install() {
@@ -68,7 +71,7 @@ public class MyApplication extends Application {
     public synchronized static OkHttpClient getClient() {
         OkHttpClient okHttpClient = null;
         if (okHttpClient == null) {
-            okHttpClient = new OkHttpClient();
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
             try {
                 // 自定义一个信任所有证书的TrustManager，添加SSLSocketFactory的时候要用到
                 final X509TrustManager trustAllCert = new X509TrustManager() {
@@ -86,12 +89,13 @@ public class MyApplication extends Application {
                     }
                 };
                 final SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCompat(trustAllCert);
-                // okHttpClient.sslSocketFactory(sslSocketFactory);
-                okHttpClient.setSslSocketFactory(sslSocketFactory);
+//                okHttpClient.setSslSocketFactory(sslSocketFactory);
+                 builder.sslSocketFactory(sslSocketFactory, trustAllCert);
+
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            // okHttpClient = builder.build();
+             okHttpClient = builder.build();
         }
         return okHttpClient;
     }

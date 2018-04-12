@@ -1,0 +1,158 @@
+#detailAnimate {
+  .scroll {
+    height: 100%;
+  }
+  .swiper-wrapper {
+    transition-duration: 0;
+    transform: translate3d(0px, 0px, 0px);
+    .swiper-slide {
+      height: 100%;
+      opacity: 1;
+      background: url("../img/bg.png");
+      background-size: cover;
+      padding: 108px 44px 0;
+      transform: translate3d(0px, 0px, 0px) scaleY(1);
+      transition-duration: 0;
+      @include display-flex;
+      @include flex-direction(column);
+
+      .title {
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-bottom: 15px;
+        height: 39px;
+        line-height: 39px;
+        background: rgba(29,32,136,.3);
+        @include border-radius(5px);
+        border: 1px solid #8686EE;
+        color: #fff;
+        font-size: 17px;
+        text-align: center;
+        @include animation-duration(1s);
+        animation-delay:0s;
+      }
+
+      .imgBox {
+        height: 350px;
+        position: relative;
+        left: 0;
+        right: 0;
+        background: #84ABF3;
+
+        img {
+          display: block;
+          border: 8px solid #fff;
+          position: absolute;
+          top: -8px;
+          bottom: -8px;
+          left: 13px;
+          right: 13px;
+          width: calc(100% - 24px);
+          height: calc(100% + 16px);
+          max-height: calc(100% + 16px);
+          @include box-sizing(border-box);
+          animation-delay:1.5s;
+
+        }
+      }
+      .textBox.hasTitle{
+        @include display-flex();
+        @include flex-direction(column);
+        @include align-items(center);
+        p{
+          @include animation-duration(0.5s);
+          animation-delay:0s;
+        }
+      }
+      .textBox.hasOnlyTitle{
+        @include display-flex();
+        @include flex-direction(column);
+        @include align-items(center);
+        @include justify-content(center);
+      }
+      .textBox {
+        @include flex(1);
+        margin-top: 15px;
+        @include border-radius(5px);
+        border: 1px solid rgba(255,255,255,.4);
+        background: linear-gradient(0deg,rgba(23, 193, 247, .4),rgba(29, 32, 136, .4));
+        color: #fff;
+        font-size: 15px;
+        padding: 11px 12px 0;
+
+        h2.textBoxTitle{
+          top:22px;
+          color: #fff;
+          font-size: 16px;
+        }
+        p {
+          width:100%;
+          @include animation-duration(0.5s);
+          animation-delay:2.5s;
+        }
+        .onlyTitle{
+          background:linear-gradient(-45deg,rgba(29, 32, 136, .4) 13%,rgba(43, 95, 199, .3) 50%,rgba(43, 95, 199, .3) 50%,rgba(29, 32, 136, .4) 100%);
+          border:1px solid rgba(255,255,255,.3);
+          @include border-radius(5px);
+          padding:40px 22px;
+          color:#fff;
+          font-size: 22px;
+          line-height: 32px;
+          text-align: center;
+          @include animation-duration(0.5s);
+          animation-delay:0s;
+        }
+      }
+    }
+  }
+
+  #array {
+    position: absolute;
+    z-index: 999;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    margin: 0 auto;
+    display: block;
+    width: 20px;
+    heig: 20px;
+  }
+  .backButton{
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    left: 10px;
+    display: block;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+  }
+  .musicLogo {
+    position: absolute;
+    z-index: 999;
+    top: 49px;
+    right: 20px;
+    display: block;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background:rgba(29,32,136,.3);
+    @include border-radius(50%);
+    border:1px solid #fff;
+    @include animation(round 5s infinite linear);
+  }
+
+  .musicLogoPaused {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    /* Safari 和 Chrome */
+  }
+}

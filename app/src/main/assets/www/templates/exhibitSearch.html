@@ -1,0 +1,20 @@
+<ion-modal-view id="exhibitSearch">
+  <ion-header-bar class="item-input-inset bar-royal">
+    <label class="item-input-wrapper" style="background:#fff">
+      <i class="icon ion-ios-search placeholder-icon" style="font-size:20px"></i>
+      <input type="search" auto-focus search-input="searchInput" placeholder="请输入展品名称搜索" ng-change="searchExhibit(searchCont.key)"  ng-model="searchCont.key" value="searchCont.key">
+    </label>
+    <button class="button button-clear"  ng-click="colseSearchModal()">
+      取消
+    </button>
+  </ion-header-bar>
+  <ion-content class="exhibitSearch" has-bouncing=true lazy-scroll>
+      <div class="nodata" ng-if="selectExhibit.length<=0&&showNoData">搜索数据暂无</div>
+      <a  ng-repeat="item in selectExhibit" ng-click="goExhibitDetail(item.id)">
+        <div style="position:relative">
+            <img image-lazy-src="{{item.logo}}" image-lazy-loader="ios" alt="" onerror="javascript:this.src='./img/erorrimg.png'">
+        </div>
+        <p>{{item.title}}</p>
+      </a>
+  </ion-content>
+</ion-modal-view>

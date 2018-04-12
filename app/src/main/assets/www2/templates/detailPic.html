@@ -1,0 +1,33 @@
+<ion-view id='detailPic'  hide-nav-bar='true' hide-back-button="true">
+  <ion-header-bar class="bar bar-dark">
+    <button class="button button-icon ion-ios-arrow-back"></button>
+    <h2 class="title">信息资讯</h2>
+    <button class="button button-icon ion-ios-more" ng-click=showMore()></button>
+  </ion-header-bar>
+
+  <ion-content scroll="false"  class="has-header has-footer" close-popup-back-drop>
+    <ion-slide-box style="height:100%;width:100%" show-pager='true'>
+      <ion-slide ng-repeat="item in [1,2,3]">
+        <ion-content class="picBox" has-bouncing='true'>
+          <h1>全国工商联召开知名民营企业家座谈会</h1>
+          <p>全国工商联</p>
+          <img src="./img/detail.png" alt="">
+          <span>弘扬优秀企业家精神　担当起时代赋予的使命和责任</span>
+          <p class="white">9月28日，全国工商联召开知名民营企业家座谈会，学习领会《中共中央国务院关于营造企业家健康成长环境弘扬优秀企业家精神更好发挥企业家作用的意见》精神，就深入贯彻落实文件精神听取意见建议。以下为知名民营企业家及两位省级工商联负责人的发言摘编。</p>
+        </ion-content>
+      </ion-slide>
+  </ion-slide-box>
+  </ion-content>
+  <div class="bar bar-footer">
+    <textarea  placeholder="谈谈见解" auto-height></textarea>
+    <div ng-if="!textareaFocus">
+      <i class="icon ion-chatbox-working"></i>
+      <span>662</span>
+    </div>
+    <div ng-if="!textareaFocus">
+      <i class="icon ion-chatbox-working"></i>
+      <span>662</span>
+    </div>
+    <div ng-if="textareaFocus" class="setButton">发送</div>
+  </div>
+</ion-view>

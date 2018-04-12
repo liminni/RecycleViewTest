@@ -1,0 +1,209 @@
+.platform-ios{
+  .moreBox{
+    .popup{
+      top: $bar-height + $ios-statusbar-height;
+    }
+  }
+}
+.moreBox {
+  .popup {
+    position: absolute;
+    z-index: 999;
+    top: $bar-height;
+    right: 10px;
+    width: 114px;
+    height: 100px;
+    background: #fff;
+    @include border-radius(5px);
+    .popup-head {
+      display: none;
+    }
+
+    .popup-body {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      i.ion-android-arrow-dropup {
+        position: absolute;
+        font-size: 30px;
+        color: #fff;
+        top: -18px;
+        right:10px;
+      }
+
+      ul {
+        width: 100%;
+        height: 100%;
+        padding:0 10px 0 5px;
+        @include display-flex;
+        @include flex-direction(column);
+
+        li {
+          @include flex(1);
+          @include display-flex;
+          @include align-items(center);
+          @include justify-content(space-around);
+          padding-left: 20px;
+          color:#394075;
+          &:nth-of-type(1) {
+            border-bottom: 1px solid #394075;
+          }
+
+          i {
+            font-size: 26px;
+            color: #394075;
+          }
+
+          span {}
+        }
+      }
+    }
+  }
+}
+
+#detailText {
+  .scroll-content {
+    .PanoramaBox{
+      width:100%;
+      height:57vw;
+      position: relative;
+    }
+    .PanoramaImg{
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .PanoramaBox:before{
+      content: "";
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      display:block;
+      width: 40px;
+      height: 40px;
+      background: url(../img/quanjing.png) no-repeat;
+      background-size:cover;
+      z-index: 999;
+    }
+    h1 {
+      padding: 12px 12px 0;
+      color: #363D73;
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+
+    .detailInfo {
+      @include display-flex;
+      @include align-items(center);
+      @include justify-content(space-between);
+      color: #ADADAD;
+      font-size: 14px;
+      border: none;
+      padding: 13px 13px 0 13px;
+
+      div {
+        @include flex(1);
+        @include display-flex;
+        @include align-items(center);
+        span:nth-of-type(1) {
+          padding-bottom: 10px;
+          margin-top:10px;
+          border-bottom: 1px solid #EFEDFF;
+        };
+        b.lines{
+          margin:0 10px;
+          color:DCDCDC;
+          display: block;
+          height: 10px;
+          width: 1px;
+          background: #DCDCDC;
+          border-left: 1px solid #F9F9F9;
+          border-right:1px solid #E2E2E2;
+        }
+      }
+
+      span {
+        i {
+          color: #a3a3a3;
+        }
+
+        b {
+          font-weight: normal;
+          margin-left: 8px;
+        }
+      };
+    }
+
+    .detailContent {
+      padding: 15px 13px 13px 13px;
+
+      p {
+        color: #717171;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: left;
+        text-indent: 1em;
+        margin:0;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        margin: 12px 0;
+        @include border-radius(3px);
+      }
+    }
+  }
+
+  .bar-footer {
+    height: auto;
+    min-height: 44px;
+    @include display-flex;
+    @include align-items(center);
+    border-top:1px solid #ECECEC;
+    @include box-shadow(0px 0 10px 3px #ECECEC);
+    textarea {
+      @include flex(1);
+      height: 30px;
+      margin: 0 6px 0 11px;
+      border: 1px solid #DEDEDE;
+      background: #F9F9F9;
+      line-height: 22px;
+      text-indent: 12px;
+      @include border-radius(5px);
+      @include placeholder(#BFBFBF,12px);
+      resize: none;
+    }
+
+    div {
+      width: 68px;
+      padding: 0 10px;
+      @include display-flex;
+      @include align-items(center);
+      @include justify-content(center);
+      color: #B8B4B8;
+      font-size: 20px;
+      img {
+        display: block;
+        width: 20px;
+      }
+      span {
+        font-size: 14px;
+        margin-left: 5px;
+        color:#9F9F9F;
+      }
+    }
+    div:nth-of-type(1){
+      border-right: 1px solid #DBDBDB;
+    }
+    div.setButton {
+      font-size: 14px;
+      color: #000;
+    }
+  }
+}

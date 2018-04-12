@@ -59,6 +59,12 @@ public class TestJSActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(XWalkView view, int progressInPercent) {
                 super.onProgressChanged(view, progressInPercent);
+                Log.d("fate",view.getUrl());
+                if (view.getUrl().contains("exhibitors")){
+//                    Intent intent = new Intent(mContext,XingbiaoActivity.class);
+//                    startActivity(intent);
+//                    finish();
+                }
             }
 
             @Override
@@ -85,9 +91,9 @@ public class TestJSActivity extends AppCompatActivity {
                 super.onPageLoadStopped(view, url, status);
             }
         });
+//        webView.load("file:///android_asset/www4/index.html",null);
 //        webView.load("file:///android_asset/jsAndroid.html",null);
-        webView.load("http://cmccdi.chinamobile.com/cmcc_dism_webapp/theme/testDownload.html",null);
-//        webView.load("http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa",null);
+        webView.load("http://10.18.20.148:8000/#/home",null);
 
     }
 //    @Override

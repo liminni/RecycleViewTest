@@ -1,0 +1,205 @@
+#exhibitorDetail{
+  .slider{
+
+    img{
+      display: block;
+      height: 214px;
+      width: 100%;
+    }
+    h2{
+      position: absolute;
+      bottom:11px;
+      width: 80%;
+      margin:0 0 0 11px;
+      font-size:17px;
+      color:#ffffff;
+    }
+    .slider-pager{
+      bottom: 18px;
+      right:5px;
+      width: auto;
+      span{
+        width: 5px;
+        font-size: 9px;
+        color:rgba(255, 255, 255,0.5);
+      }
+      span.active{
+        color:#fff;
+      }
+    }
+  }
+  .detailTip{
+    height: 96px;
+    @include display-flex;
+    margin-top:11px;
+    border-bottom: 8px solid #ecedee;
+    div:nth-of-type(1){
+      height: 76px;
+      width: 101px;
+      @include border(1px,#ecedee,solid);
+      margin-left:11px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    div:nth-of-type(2){
+      @include flex(1);
+      margin:0 13px;
+      p{
+        margin:0;
+        width: 100%;
+        height: 18px;
+        line-height: 18px;
+        &:nth-of-type(1){
+          font-size:15px;
+          color:#030303;
+          height: 22px;
+          line-height: 22px;
+          @include display-flex;
+          @include  justify-content(space-between);
+          i{
+            font-weight: bold;
+            color:#c7c7cc;
+            font-size: 20px;
+          }
+        }
+        &:nth-of-type(2){
+          font-size:13px;
+          color:#d33234;
+          margin:8px 0 4px 0;
+        }
+        &:nth-of-type(3){
+          font-size:13px;
+          color:#8f8e94;
+        }
+      }
+    }
+  }
+  .list{
+    margin:0px 13px 0 10px;
+    h3{
+      line-height: 35px;
+      height: 35px;
+      font-size:13px;
+      color:#d33234;
+    }
+    div{
+      font-size:15px;
+      color:#8f8e94;
+      padding-left: 5px;
+    }
+  }
+}
+// 我的视频
+.myVideo{
+  height: 214px;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding:0;
+    overflow: hidden;
+  .videoPlay{
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom:0;
+    right: 0;
+    margin: auto;
+    height: 58px;
+    width: 57px;
+    @include border-radius(50%);
+    background: url(../img/icon_play.png) no-repeat;
+    background-size: cover;
+  }
+  .videoParse{
+    background: url(../img/icon_parse.png) no-repeat;
+  }
+  .videoLoading{
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom:0;
+    right: 0;
+    margin: auto;
+    z-index:999;
+    display: block;
+    height: 58px;
+    @include display-flex;
+    @include justify-content(center);
+    @include align-items(center);
+    span{
+      color:#fff;
+      padding-left: 10px;
+    }
+  }
+  .videoContrl{
+    position: absolute;
+    z-index: 999;
+    bottom:0;
+    width: 100%;
+    height: 44px;
+    background:rgba(0,0,0,0.6);
+    padding:0 20px;
+
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(space-between);
+    .playBotton{
+        display: block;
+        height: 100%;
+        line-height: 44px;
+        width: 30px;
+        padding:0;
+        margin:0;
+        i{
+          font-size: 24px;
+          color:#fff;
+        }
+
+    }
+
+    .videoProgress{
+      height: 3px;
+      background:rgba(255,255,255,.3);
+      width: 50%;
+      position: relative;
+      #progressDiv{
+        position: absolute;
+        z-index: 2;
+        left: -6px;
+        top:-6px;
+        height:12px;
+        width: 12px;
+        background:$assertive;
+        @include border-radius(50%);
+        border:3px solid #fff;
+        margin:0;
+      }
+      #loaded{
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top:0;
+        height: 3px;
+        width:0;
+        background: $assertive;
+      }
+    }
+    .startTime,.endTime{
+      padding:0 10px;
+      color:#fff;
+    }
+  }
+  // .videoContrl.ng-hide{
+  //   animation: 1s showVideoCtrl;
+  // }
+  //视屏控制器ng-show动画
+  @keyframes showVideoCtrl{
+    from{
+        bottom: 0;
+    }to{
+        bottom: -44px;
+    }
+  }
+}

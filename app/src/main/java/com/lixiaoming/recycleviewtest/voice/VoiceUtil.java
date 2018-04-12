@@ -4,8 +4,6 @@ import android.media.MediaPlayer;
 import android.os.Environment;
 import android.util.Log;
 
-import com.lixiaoming.recycleviewtest.utils.Base64Util;
-
 import java.io.IOException;
 
 /**
@@ -21,7 +19,7 @@ public class VoiceUtil {
                     + "/data/files/player35.amr";
             try {
 //                String base64Str = Base64Util.ioToBase64(fileStr);
-                Base64Util.base64ToIo(base64, fileString);
+//                Base64Util.base64ToIo(base64, fileString);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -1,0 +1,21 @@
+<div class="myVideo">
+    <video   style="background:#000;width:100%;height:57vw;">
+    </video>
+    <div class="videoPlay" ng-show="onOff.showPlayButton"></div>
+    <div class="videoLoading" ng-show="onOff.showLoading">
+      <ion-spinner icon="ios" class="spinnerContent spinner-light" ></ion-spinner>
+      <span>加载中</span>
+    </div>
+    <div class="videoContrl" ng-show="onOff.showControl">
+        <span class="playBotton">
+          <i class="icon ion-pause" ng-if="!onOff.showPlayButton"></i>
+          <i class="icon ion-play" ng-if="onOff.showPlayButton"></i>
+        </span>
+        <span class="startTime">{{currentTime | videoTime}}</span>
+        <div class="videoProgress" >
+            <p id="progressDiv"></p>
+            <p id="loaded"></p>
+        </div>
+        <span class="endTime">{{endTime | videoTime}}</span>
+    </div>
+</div>

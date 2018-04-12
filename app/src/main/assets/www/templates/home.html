@@ -1,0 +1,73 @@
+<ion-view class="hz_home">
+  <ion-header-bar class="item-input-inset bar-royal">
+    <button class="button button-clear" ng-click="colseView()">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <div class="item-input-wrapper" ng-click="showSearchModal()">
+      <i class="icon ion-ios-search placeholder-icon" ></i>
+      <p >搜索</p>
+    </div>
+
+    <button class="button button-clear" ng-click="goAttention()">
+      我的关注
+    </button>
+
+  </ion-header-bar>
+  <ion-content class="has-header"  scroll="false" id="myHomeSrcoll" delegate-handle="homeScroll">
+    <div class="nav_box">
+      <p>
+        <i class="icon ion-ios-star"></i>
+        <span>热门展商</span>
+      </p>
+      <ion-scroll class="nav_scroll"  has-bouncing="true"  direction="x" scrollbar-x="false"  scrollbar-y="false"  delegate-handle="navScroll" lazy-scroll>
+          <a class="nav"  ng-repeat="item in navItems" ng-click="goExhibitor(item.id)">
+              <div style="position:relative">
+                <img image-lazy-src="{{item.logo}}" image-lazy-loader="ios" alt="" onerror="javascript:this.src='./img/erorrimg.png'">
+              </div>
+              <span>{{item.name}}</span>
+          </a>
+      </ion-scroll>
+    </div>
+    <div class="garyLine"></div>
+      <ion-scroll class="home_subTitle" has-bouncing=true direction="x" scrollbar-x=false scrollbar-y=false>
+          <span ng-repeat="title in areaItems"
+          ng-class='{active:subTitleIndex==$index}' ng-click="changeArea($index,title.id)" >{{title.name}}</span>
+      </ion-scroll>
+      <div class="home_main" >
+          <ion-scroll  class="home_mainLeft"   scrollbar-x="false" scrollbar-y="false" delegate-handle="mainLeftScroll"
+           has-bouncing=true >
+                <ion-item ng-class='{active:activeItem==$index}' class="item-text-wrap" ng-click="changeItem($index,industry.id)"
+                ng-repeat="industry in industryItems">
+                  <span>{{industry.name}}</span>
+                </ion-item>
+
+            </ion-scroll>
+          <ion-scroll  class="home_mainRight" nav-move  scrollbar-x="false" scrollbar-y="false" delegate-handle="mainRightScroll"
+            has-bouncing=true  lazy-scroll>
+                <ion-list>
+                  <a  ng-click="goExhibitor(item.id)" ng-repeat="item in exhibitorLists track by $index" on-repeat-finished-render>
+                    <div>
+                        <img image-lazy-src="{{item.logo}}" image-lazy-loader="ios" onerror="javascript:this.src='./img/erorrimg.png'">
+                    </div>
+                    <div>
+                      <h2>{{item.title}}</h2>
+                      <p>展位号:{{item.boothnumber}}</p>
+                    </div>
+
+                  </a>
+                  <div class="nodata" ng-if="exhibitorLists.length<=0">
+                        暂无数据
+                  </div>
+                </ion-list>
+          </ion-scroll>
+          <div class="scrollTo" ng-if="subTitleIndex==0&&activeItem==0">
+            <i class="icon ion-ios-search"></i>
+              <ul>
+                <li
+                  ng-click="goTopIndex($index)"
+                ng-repeat="tip in [1,21,41,61,81,101]">{{tip}}</li>
+              </ul>
+          </div>
+      </div>
+  </ion-content>
+</ion-view>

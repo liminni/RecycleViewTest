@@ -1,0 +1,45 @@
+#exhibitSearch{
+  .bar-header{
+    input{
+      padding:0 2px;
+    }
+  }
+  .nodata{
+    margin-top:20px;
+    margin-left: -3.5%;
+    font-size:15px;
+    line-height: 30px;
+    color:#8f8e94;
+    text-align: center;
+  }
+  .scroll{
+    width: 100%;
+
+    margin-left: 3.5%;
+    a{
+      display: block;
+      max-width: 28.8%;
+      min-width: 90px;
+      height: 118px;
+      margin-top:14px;
+      margin-right: 13px;
+      float: left;
+      text-decoration: none;
+      text-align: center;
+      font-size:15px;
+      color:#030303;
+      div{
+        width: 100%;
+        min-height: 70px;
+        img{
+          display: block;
+          width: 100%;
+        }
+      }
+      p{
+        margin: 5px 0 10px 0
+      };
+    };
+
+  }
+}

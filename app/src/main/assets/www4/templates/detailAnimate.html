@@ -1,0 +1,48 @@
+<ion-view id="detailAnimate" view-title="信息资讯" hide-nav-bar='true'>
+  <ion-content >
+    <audio id='myAudio' src="./img/sound.mp3" autoplay='false'>
+      您的浏览器不支持 audio 标签。
+    </audio>
+
+    <div class="swiper-container swiper-container-vertical">
+      <div class="swiper-wrapper">
+        <section class="swiper-slide" ng-repeat='item in detailList.interactive' on-repeat-finished-render>
+          <h1 ng-if='item.title&&item.imageUrl' class="title ani resize flip animated" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0s">{{item.title}}</h1>
+          <div class="imgBox" ng-if='item.imageUrl'>
+            <img class="ani resize rotateInDownLeft animated" swiper-animate-effect="rotateInDownLeft" swiper-animate-duration="1.5s" swiper-animate-delay="1s" ng-src="{{item.imageUrl}}" alt="">
+          </div>
+          <div class="textBox" ng-if='item.remark&&item.title&&item.imageUrl'>
+            <p class=" ani resize fadeInUp animated" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="2.5s">{{item.remark}}</p>
+          </div>
+          <div class="textBox hasTitle" ng-if='item.remark&&item.title&&!item.imageUrl'>
+            <h2 class="ani resize fadeInUp animated textBoxTitle">{{item.title}}</h2>
+            <p class="ani resize fadeInUp animated onlyText" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="0s">{{item.remark}}</p>
+          </div>
+          <div class="textBox hasOnlyTitle" ng-if="item.title&&!item.remark&&!item.imageUrl">
+            <p class="ani resize fadeInUp animated onlyTitle" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="0s">{{item.title}}</p>
+          </div>
+        </section>
+        <!-- <section class="swiper-slide">
+          <h1 class="title ani resize flip animated" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0s">工商联网上联系</h1>
+          <div class="imgBox">
+            <img class="ani resize rotateInDownLeft animated" swiper-animate-effect="rotateInDownLeft" swiper-animate-duration="1.5s" swiper-animate-delay="1s" src="./img/animateDetail.png" alt="">
+          </div>
+        </section>
+        <section class="swiper-slide">
+          <div class="textBox hasTitle">
+            <h2 class="ani resize fadeInUp animated textBoxTitle">工商联网上联系</h2>
+            <p class="ani resize fadeInUp animated onlyText" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="0s">10月24号,中国共产党第十九次全国代表大会在北京人名大会堂闭幕.习近平同志主持大会.</p>
+          </div>
+        </section>-->
+        <section class="swiper-slide" ng-if='!detailList'>
+          <div class="textBox hasOnlyTitle" ng-if="!item.remark&&!item.imageUrl">
+            <p class="ani resize fadeInUp animated onlyTitle" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="0s">中国共产党第十九次全国代表大会.</p>
+          </div>
+        </section>
+      </div>
+      <img src="./img/arrow.png" id="array" class="resize">
+      <i class="icon ion-ios-musical-notes musicLogo" ng-click="toggleAudio()"></i>
+      <button class="button button-icon ion-ios-arrow-back backButton" ng-click='goBack()'></button>
+    </div>
+  </ion-content>
+</ion-view>

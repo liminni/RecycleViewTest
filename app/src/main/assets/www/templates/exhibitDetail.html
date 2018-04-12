@@ -1,0 +1,40 @@
+<ion-view id="exhibitorDetail">
+  <ion-header-bar class="bar-royal">
+    <button class="button button-clear" ng-click="$ionicGoBack()">
+      <i class="icon  ion-ios-arrow-back"></i>
+    </button>
+    <h2 class="title"> 展品详情</h2>
+  </ion-header-bar>
+  <ion-content has-bouncing=true >
+    <ion-slide-box ng-if="exhibitProduct.vedioOrPic=='pic'" style="height: 214px;" delegate-handle="exhibitNav" show-pager="true" pager-click="changePage(index)">
+      <ion-slide ng-repeat="img in exhibitProduct.picArr">
+          <img ng-src="{{img.imageurl}}" alt="" onerror="javascript:this.src='./img/erorrimg.png'">
+          <h2>{{exhibitProduct.title}}</h2>
+      </ion-slide>
+    </ion-slide-box>
+    <my-video ng-if="!is_iphone&&exhibitProduct.vedioOrPic=='vedio'"  info={{videoInfo}} ></my-video>
+    <video ng-if="is_iphone&&exhibitProduct.vedioOrPic=='vedio'" ng-src="{{exhibitProduct.vedio | trustUrl}}"
+              width="100%" height="214px" style="background:#000"
+            controls="controls"
+            poster={{exhibitProduct.logo}}>
+          <!-- <source ng-repeat="video in videoInfo.sources" ng-src="{{video.src | trustUrl}}" type="video"/> -->
+
+    </video>
+
+    <div class="detailTip" ng-click="goExhibitor(exhibit.id)">
+        <div>
+          <img ng-src="{{exhibit.logo}}" alt="">
+        </div>
+        <div class="">
+          <p>{{exhibit.title}}<i class="icon ion-ios-arrow-forward"></i></p>
+          <p>展位号：{{exhibit.bootThnumber}}</p>
+          <p>行业：{{exhibit.industryIdArr}}</p>
+        </div>
+    </div>
+    <ion-list>
+      <h3>展品详情</h3>
+      <div ng-bind-html="exhibitProduct.detail">
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

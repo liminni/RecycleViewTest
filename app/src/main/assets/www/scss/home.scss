@@ -1,0 +1,326 @@
+//图片懒加载loading
+.image-loader-container{
+  position: absolute!important;
+  top:0;
+  left: 0;
+  @include display-flex;
+  @include justify-content(center);
+  @include align-items(center);
+}
+//loadingBar样式调整
+.loading{
+  div{
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+    span{
+      padding-top: 5px;
+    }
+  }
+}
+//ios沉浸式
+.platform-ios {
+  &:not(.fullscreen) {
+    .bar-header:not(.bar-subheader) {
+      height: $bar-height + $ios-statusbar-height;
+
+      &.item-input-inset .item-input-wrapper {
+        margin-top: 19px !important;
+      }
+
+      > * {
+        margin-top: $ios-statusbar-height;
+      }
+    }
+    .tabs-top > .tabs,
+    .tabs.tabs-top {
+      top: $bar-height + $ios-statusbar-height;
+    }
+
+    .has-header,
+    .bar-subheader {
+      top: $bar-height + $ios-statusbar-height;
+    }
+    .has-subheader {
+      top: $bar-height + $bar-subheader-height + $ios-statusbar-height;
+    }
+    .has-header.has-tabs-top {
+      top: $bar-height + $tabs-height + $ios-statusbar-height;
+    }
+    .has-header.has-subheader.has-tabs-top {
+      top: $bar-height + $bar-subheader-height + $tabs-height + $ios-statusbar-height;
+    }
+  }
+  .popover{
+    .bar-header:not(.bar-subheader) {
+      height: $bar-height;
+      &.item-input-inset .item-input-wrapper {
+        margin-top: -1px;
+      }
+      > * {
+        margin-top: 0;
+      }
+    }
+    .has-header,
+    .bar-subheader {
+      top: $bar-height;
+    }
+    .has-subheader {
+      top: $bar-height + $bar-subheader-height;
+    }
+  }
+  &.status-bar-hide {
+    // Cordova doesn't adjust the body height correctly, this makes up for it
+    margin-bottom: 20px;
+  }
+}
+
+@media (orientation:landscape) {
+  .platform-ios.platform-browser.platform-ipad {
+    position: fixed; // required for iPad 7 Safari
+  }
+}
+
+.platform-c:not(.enable-transitions) * {
+  // disable transitions on grade-c devices (Android 2)
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+//头部返回按钮点击范围放大
+.bar-header
+  button.left{
+    padding-right:20px!important;
+  }
+
+// 会展首页
+.hz_home{
+  .item-input-inset{
+    button{
+      font-size:17px;
+      color:#ffffff;
+      text-align:right;
+      margin-left: 0;
+    }
+    .item-input-wrapper{
+      background: #fff;
+      margin-right: 20px;
+      margin-left: 18px;
+      @include justify-content(center);
+      i{
+        color:#8e8e93;
+        font-size:16px;
+      }
+      p{
+        font-size:14px;
+        color:#7a797b;
+        padding:4px 0;
+        margin: 0;
+      }
+    }
+  }
+  .nav_box{
+    height: 165px;
+    overflow: hidden;
+    p{
+      height: 18px;
+      line-height: 18px;
+      font-size: 13px;
+      margin:10px 0 10px 14px;
+      color:#51565c;
+      i{
+        padding-right:3px;
+        color:#d33234;
+      }
+    }
+    .nav_scroll .scroll{
+      height: 138px;
+        min-width: 100%;
+        @include display-flex;
+
+      .nav{
+
+        @include border(1px,#ecedee,solid);
+        min-width:118px;
+        width:32%;
+        height:90px;
+        margin: 0 11px;
+        text-decoration: none;
+        div{
+          height: 100%;
+          width: 100%;
+          img{
+            display: block;
+            height: 100%;
+            width: 100%;
+          }
+        }
+        span{
+          display: block;
+          line-height: 40px;
+          max-width: 108px;
+          height: 40px;
+          margin: 0 auto;
+          overflow : hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          text-align: center;
+          font-family:"PingFangSC-Light";
+          font-size:15px;
+          color:#030303;
+
+        }
+      }
+
+
+    }
+  }
+  .garyLine{
+    height: 8px;
+    background:#ecedee;
+  }
+  //展区
+  .home_subTitle{
+    background: #fff;
+    height: 44px;
+    @include border(0 0 1px 0,#dad9dc,solid);
+
+    .scroll{
+      height: 44px;
+      min-width: 100%;
+      @include display-flex;
+      @include align-items(center);
+      padding-left: 10px;
+      span{
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        min-width: 72px;
+        margin-right: 5px;
+        background: #fff;
+        font-family:"PingFangSC-Regular";
+        font-size:13px;
+        color:#8f8e94;
+        letter-spacing:-0.08px;
+        text-align:center;
+      }
+      span.active{
+        background: $themeColor;
+        @include border-radius(48px);
+        color: #fff;
+      }
+    }
+  }
+  //main
+  .home_main{
+
+    position: absolute;
+    bottom: 0;
+    top:217px;
+    @include display-flex;
+    width: 100%;
+    margin-top:1px;
+    padding:12px 0 12px 12px;
+    .home_mainLeft{
+      width: 30.4%;
+      .item{
+        border:none;
+        background: none;
+        color:#030303;
+        text-align: center;
+      }
+      .item.active{
+        color:#5a9eff;
+      }
+    }
+    .home_mainRight{
+      @include flex(1);
+      .scroll{
+        a{
+          @include display-flex;
+          @include flex-wrap(nowrap);
+          width:100%;
+          height: 92px;
+          padding:7px 0;
+          text-decoration: none;
+          @include border(0 0 1px 0,#C8C7CC,solid);
+          div:nth-of-type(1){
+            height: 76px;
+            width:  101px;
+            @include border(1px,#ecedee,solid);
+            @include box-sizing(border-box);
+            position: relative;
+
+            img{
+              display: block;
+              width: 100%;
+              height: 100%;
+            }
+          }
+          div:nth-of-type(2){
+            @include flex(1);
+            margin-left: 7px;
+
+            h2{
+              height: 44px;
+              width: 100%;
+              font-size:15px;
+              line-height: 20px;
+              padding:6px 10px 0 0;
+              color:#51565c;
+              margin-bottom: 5px;
+              white-space: pre-wrap;
+              overflow : hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+            }
+            p{
+              height: 24px;
+              line-height: 18px;
+              margin:0;
+              font-family:"PingFangSC-Regular";
+              font-size:11px;
+              color:$themeColor;
+              letter-spacing:-0.18px;
+            }
+          }
+
+        }
+        .nodata{
+          margin-top:20px;
+          font-size:15px;
+          line-height: 30px;
+          color:#8f8e94;
+          text-align: center;
+        }
+      }
+    }
+    .scrollTo{
+
+      width: 22px;
+      height: 100%;
+      margin:76px 0 0 12px;
+      font-family:"PingFangSC-Regular";
+      font-size:12px;
+      color:#1a6deb;
+      letter-spacing:-0.07px;
+      text-align:center;
+      i{
+        color:#030303;
+        font-size: 16px;
+      }
+      ul {
+        li{
+          margin-top:10px;
+          &.active{
+            color:$themeColor;
+          }
+        }
+      }
+    }
+  }
+}

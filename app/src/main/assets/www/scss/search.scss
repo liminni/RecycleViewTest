@@ -1,0 +1,71 @@
+//搜索,我的关注
+#hzSearch,#hzAttention{
+  .bar-header{
+    input{
+      padding:0 2px;
+    }
+  }
+  .list{
+    a{
+      display: block;
+      @include display-flex;
+      @include flex-wrap(wrap);
+      width: 100%;
+      padding:9px 0px 0 13px;
+      text-decoration: none;
+      div:nth-of-type(1){
+        width:103px;
+        height:78px;
+        @include border(1px,#ecedee,solid);
+        @include box-sizing(content-box)
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      div:nth-of-type(2){
+        @include flex(1);
+        margin:0 11px;
+        font-family:"PingFangSC-Light";
+        p{margin:0}
+        p:nth-of-type(1){
+          font-size:15px;
+          line-height: 17px;
+          color:#030303;
+          overflow : hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        p:nth-of-type(2){
+          line-height: 17px;
+          font-size:13px;
+          color:$themeColor;
+          margin:8px 0 5px 0;
+        }
+        p:nth-of-type(3){
+          font-size:13px;
+          color:#8f8e94;
+          line-height: 18px;
+        }
+      }
+      div:nth-of-type(3){
+        width: 93%;
+        height: 0;
+        margin-left:7%;
+        margin-top:9px;
+        @include border(0 0 1px 0,#c8c7cc,solid);
+      }
+    }
+    .nodata{
+      margin-top:20px;
+      font-size:15px;
+      line-height: 30px;
+      color:#8f8e94;
+      text-align: center;
+    }
+  }
+
+}
