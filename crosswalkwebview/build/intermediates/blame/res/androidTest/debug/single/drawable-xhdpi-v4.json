@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/color_picker_advanced_select_handle.png",
-        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/color_picker_advanced_select_handle.png"
-    },
-    {
         "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/bubble_arrow_up.png",
         "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/bubble_arrow_up.png"
+    },
+    {
+        "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/color_picker_advanced_select_handle.png",
+        "source": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/color_picker_advanced_select_handle.png"
     },
     {
         "merged": "/Users/lixiaoming/Documents/Demo/RecycleViewTest/crosswalkwebview/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_menu_share_holo_light.png",

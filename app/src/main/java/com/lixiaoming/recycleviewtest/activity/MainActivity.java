@@ -39,12 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageView iv;
 
-    // WheelMain wheelMain;
-    //
-    // EditText txttime;
-    //
-    // DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +51,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mContext = this;
         activity = this;
         initView();
+        test();
+    }
+
+    public void test() {
+        // 输出帕斯卡三角形数组
+        /**
+         * 当numRows = 5时 [ [1] [1,1] [1,2,1] [1,3,3,1] [1,4,6,4,1] ]
+         */
+        // int[][] generate = generate(5);
+        // Log.d("fate","[");
+        // for (int i = 0; i < generate.length; i++) {
+        // Log.d("fate","[");
+        // for (int j = 0; j < generate[i].length; j++) {
+        // Log.d("fate",generate[i][j] + "");
+        // }
+        // Log.d("fate","]");
+        // }
+        // Log.d("fate","]");
+
+        int[] a = { 1, 2, 3 };
+        int[] b = { 4, 5, 6 };
+        int[] mergeArray = mergeArray(a, b);
+        for (int i = 0; i < mergeArray.length; i++) {
+            Log.d("fate", mergeArray[i] + "");
+        }
 
     }
 
@@ -87,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_rsa = ((Button) findViewById(R.id.btn_rsa));
         Button btn_login = ((Button) findViewById(R.id.btn_login));
         Button btn_viewPager_Fragment = ((Button) findViewById(R.id.btn_viewPager_Fragment));
+        Button btn_customerDialog = ((Button) findViewById(R.id.btn_customerDialog));
         iv = ((ImageView) findViewById(R.id.iv));
 
         btn_linear_1.setOnClickListener(this);
@@ -108,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_rsa.setOnClickListener(this);
         btn_login.setOnClickListener(this);
         btn_viewPager_Fragment.setOnClickListener(this);
+        btn_customerDialog.setOnClickListener(this);
 
         btn_time_seletor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,122 +156,132 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
-            case btn_linear_1:
-                intent = new Intent(mContext, LinearLayoutManageActivity.class);
-                intent.putExtra("orientation", "horizonal");
-                startActivity(intent);
-                break;
-            case R.id.btn_linear_2:
-                intent = new Intent(mContext, LinearLayoutManageActivity.class);
-                intent.putExtra("orientation", "vertical");
-                startActivity(intent);
-                break;
-            case R.id.btn_grid_1:
-                intent = new Intent(mContext, GridLayoutManagerActivity.class);
-                intent.putExtra("isUseDivider", "yes");
-                startActivity(intent);
-                break;
-            case R.id.btn_grid_2:
-                intent = new Intent(mContext, GridLayoutManagerActivity.class);
-                intent.putExtra("isUseDivider", "no");
-                startActivity(intent);
-                break;
-            case R.id.btn_staggered_1:// 固定行或者固定列
-                intent = new Intent(mContext, TestPopWindowActivity.class);
-                intent.putExtra("fixedHeight", "fixed");
-                startActivity(intent);
-                break;
-            case R.id.btn_staggered_2:// item项的高度随机
-                // intent = new Intent(mContext,
-                // StaggeredLayoutManagerActivity.class);
-                // intent.putExtra("fixedHeight", "unfixed");
-                // intent = new Intent(mContext, FingerLoginActivity.class);
-                // startActivityForResult(intent, 1008);
-                intent = new Intent(mContext, TestJSActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btn_finger:
-                intent = new Intent(mContext, StartFingerActivity.class);
-                startActivityForResult(intent, 1009);
-                break;
-            case R.id.btn_voice:
-                intent = new Intent(mContext, MediaRecorderActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btn_playvoice:
-                VoiceUtil.playVoice(base64);
-                break;
-            case R.id.btn_indexBar:
+        case btn_linear_1:
+            intent = new Intent(mContext, LinearLayoutManageActivity.class);
+            intent.putExtra("orientation", "horizonal");
+            startActivity(intent);
+            break;
+        case R.id.btn_linear_2:
+            intent = new Intent(mContext, LinearLayoutManageActivity.class);
+            intent.putExtra("orientation", "vertical");
+            startActivity(intent);
+            break;
+        case R.id.btn_grid_1:
+            intent = new Intent(mContext, GridLayoutManagerActivity.class);
+            intent.putExtra("isUseDivider", "yes");
+            startActivity(intent);
+            break;
+        case R.id.btn_grid_2:
+            intent = new Intent(mContext, GridLayoutManagerActivity.class);
+            intent.putExtra("isUseDivider", "no");
+            startActivity(intent);
+            break;
+        case R.id.btn_staggered_1:// 固定行或者固定列
+            intent = new Intent(mContext, TestPopWindowActivity.class);
+            intent.putExtra("fixedHeight", "fixed");
+            startActivity(intent);
+            break;
+        case R.id.btn_staggered_2:// item项的高度随机
+            // intent = new Intent(mContext,
+            // StaggeredLayoutManagerActivity.class);
+            // intent.putExtra("fixedHeight", "unfixed");
+            // intent = new Intent(mContext, FingerLoginActivity.class);
+            // startActivityForResult(intent, 1008);
+            intent = new Intent(mContext, TestJSActivity.class);
+            startActivity(intent);
+            break;
+        case R.id.btn_finger:
+            intent = new Intent(mContext, StartFingerActivity.class);
+            startActivityForResult(intent, 1009);
+            break;
+        case R.id.btn_voice:
+            intent = new Intent(mContext, MediaRecorderActivity.class);
+            startActivity(intent);
+            break;
+        case R.id.btn_playvoice:
+            VoiceUtil.playVoice(base64);
+            break;
+        case R.id.btn_indexBar:
 
-                Log.d("fate", "====:" + view.getId());
-                Log.d("fate", "====:" + getResources().getResourceEntryName(view.getId()));
-                Log.d("fate", "====:" + view.getTag());
-                intent = new Intent(mContext, XingbiaoActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btn_playAudio:
-                intent = new Intent(mContext, PlayAudioActivity.class);
-                // String audioPath =
-                // Environment.getExternalStorageDirectory().getAbsolutePath() +
-                // File.separator+"CLANNAD-樱花飞雪.mp3";
-                // String audioPath =
-                // Environment.getExternalStorageDirectory().getAbsolutePath() +
-                // File.separator+"playCommit.amr";
-                String audioPath = "http://172.20.96.103:8080/bowei_audio_img/GuNsPoAwmBCKteo.m4a";
+            Log.d("fate", "====:" + view.getId());
+            Log.d("fate", "====:" + getResources().getResourceEntryName(view.getId()));
+            Log.d("fate", "====:" + view.getTag());
+            intent = new Intent(mContext, XingbiaoActivity.class);
+            startActivity(intent);
+            break;
+        case R.id.btn_playAudio:
+            intent = new Intent(mContext, PlayAudioActivity.class);
+            // String audioPath =
+            // Environment.getExternalStorageDirectory().getAbsolutePath() +
+            // File.separator+"CLANNAD-樱花飞雪.mp3";
+            // String audioPath =
+            // Environment.getExternalStorageDirectory().getAbsolutePath() +
+            // File.separator+"playCommit.amr";
+            String audioPath = "http://172.20.96.103:8080/bowei_audio_img/GuNsPoAwmBCKteo.m4a";
 
-                intent.putExtra("audioPath", audioPath);
-                startActivity(intent);
-                break;
-            case R.id.btn_open:
-                intent = new Intent();
-                intent.setAction("android.intent.action.VIEW");
-//            Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/theme/testDownload.html");
-                Uri content_url = Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa");
-                intent.setData(content_url);
-                startActivity(intent);
-                break;
-            case R.id.btn_glide_okhttp:
-                iv.setVisibility(View.VISIBLE);
-                Glide.with(mContext).load("https://yqcxcjz.taiji.com.cn/file//upload/news/news-20170910210917369947.jpg").into(iv);
-                break;
-            case R.id.btn_open_router:
-                openOtherApp("com.smartdot.mobile.routertest",mContext);
-                break;
-            case R.id.btn_test_grid:
-                intent = new Intent(mContext,TextGridlayoutActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btn_listShow:
-                intent = new Intent(mContext,FICListActivity.class);
-                startActivity(intent);
-                String url = "http://192.168.180.136/file//upload/upload/comment/comment-20171027141514186691.xls";
-                String s = url.substring(url.lastIndexOf("/")+1);
-                Log.d("fate",s);
-                break;
-            case R.id.btn_rsa:
-                startActivity(new Intent(mContext,RSAActivity.class));
-                break;
-            case R.id.btn_login:
-                //使用工具类中的启动第三方app的方法
-                OpenOtherAppUtil.openOtherApp(mContext,"com.smartdot.mobile.nci","com.smartdot.mobile.nci.activity.StartActivity");
-//                String str = "Qw1srGtCICgGtjmUbtJS3MJZ0chQlWckkoMDJqf+SrIeunVCaleWVs+4Vy1e fD0tJRBLf6uoloJ4XC8OPHvEXw==";
-//                DESUtils.decryptDES(str);
-                break;
-            case R.id.btn_viewPager_Fragment:
-                startActivity(new Intent(mContext,ViewPagerFragmentRecycleviewActivity.class));
-                break;
+            intent.putExtra("audioPath", audioPath);
+            startActivity(intent);
+            break;
+        case R.id.btn_open:
+            intent = new Intent();
+            intent.setAction("android.intent.action.VIEW");
+            // Uri content_url =
+            // Uri.parse("http://cmccdi.chinamobile.com/cmcc_dism_webapp/theme/testDownload.html");
+            Uri content_url = Uri.parse(
+                    "http://cmccdi.chinamobile.com/cmcc_dism_webapp/component/AttachmentController/download?attachmentId=AaCiiMPWdZzxQFa");
+            intent.setData(content_url);
+            startActivity(intent);
+            break;
+        case R.id.btn_glide_okhttp:
+            iv.setVisibility(View.VISIBLE);
+            Glide.with(mContext).load("https://yqcxcjz.taiji.com.cn/file//upload/news/news-20170910210917369947.jpg")
+                    .into(iv);
+            break;
+        case R.id.btn_open_router:
+            openOtherApp("com.smartdot.mobile.routertest", mContext);
+            break;
+        case R.id.btn_test_grid:
+            intent = new Intent(mContext, TextGridlayoutActivity.class);
+            startActivity(intent);
+            break;
+        case R.id.btn_listShow:
+            intent = new Intent(mContext, FICListActivity.class);
+            startActivity(intent);
+            String url = "http://192.168.180.136/file//upload/upload/comment/comment-20171027141514186691.xls";
+            String s = url.substring(url.lastIndexOf("/") + 1);
+            Log.d("fate", s);
+            break;
+        case R.id.btn_rsa:
+            startActivity(new Intent(mContext, RSAActivity.class));
+            break;
+        case R.id.btn_login:
+            // 使用工具类中的启动第三方app的方法
+            OpenOtherAppUtil.openOtherApp(mContext, "com.smartdot.mobile.nci",
+                    "com.smartdot.mobile.nci.activity.StartActivity");
+            // String str =
+            // "Qw1srGtCICgGtjmUbtJS3MJZ0chQlWckkoMDJqf+SrIeunVCaleWVs+4Vy1e
+            // fD0tJRBLf6uoloJ4XC8OPHvEXw==";
+            // DESUtils.decryptDES(str);
+            break;
+        case R.id.btn_viewPager_Fragment:
+            startActivity(new Intent(mContext, ViewPagerFragmentRecycleviewActivity.class));
+            break;
+        case R.id.btn_customerDialog:
+            startActivity(new Intent(mContext, ShowCustomDialogActivity.class));
+            break;
         }
 
     }
 
-
     /**
      * 在一个程序中打开另一个程序
-     * @param packageName  包启动的app 的包名
-     * @param context  context上下文环境
+     * 
+     * @param packageName
+     *            包启动的app 的包名
+     * @param context
+     *            context上下文环境
      */
-    public static void openOtherApp(String packageName,Context context) {
-
+    public static void openOtherApp(String packageName, Context context) {
 
         PackageManager packageManager = context.getPackageManager();
 
@@ -272,7 +303,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0);
 
         ResolveInfo ri = apps.iterator().next();
-        if (ri != null ) {
+        if (ri != null) {
 
             // 获取Activity名
             // 这个就是我们要找的该APP的LAUNCHER的Activity[组织形式：packagename.mainActivityname]
@@ -284,15 +315,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ComponentName cn = new ComponentName(packageName, className);
             String name = DESUtils.encrypt("anlun");
             String password = DESUtils.encrypt("anl@1234");
-            Log.d("fate","name:"+name);
-            Log.d("fate","password"+password);
+            Log.d("fate", "name:" + name);
+            Log.d("fate", "password" + password);
             intent.setComponent(cn);
-            intent.putExtra("condition","first");
+            intent.putExtra("condition", "first");
             intent.putExtra("userName", name);
-            intent.putExtra("password",password);
+            intent.putExtra("password", password);
             context.startActivity(intent);
         }
     }
+
     private int RESULT_CANCLE = -101;
 
     private int RESULT_FAIL = -102;
@@ -585,82 +617,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 1008:
-                if (resultCode == RESULT_OK) {
-                    // Toast.makeText(mContext, "指纹验证成功。。。。。。",
-                    // Toast.LENGTH_LONG).show();
-                    Log.d("fate", "指纹验证成功");
-                } else if (resultCode == RESULT_CANCLE) {
-                    // Toast.makeText(mContext, "取消了指纹验证",
-                    // Toast.LENGTH_LONG).show();
-                    Log.d("fate", "取消了指纹验证");
-                } else if (resultCode == RESULT_FAIL) {
-                    // Toast.makeText(mContext, "指纹验证失败", Toast.LENGTH_LONG).show();
-                    Log.d("fate", "指纹验证失败");
-                }
-                break;
-            case 1009:
-                String info = "";
-                if (data != null) {
-                    info = data.getStringExtra("info");
-                }
-                if (resultCode == SUCCESS) {
-                    // 若有指纹，则需要绑定用户信息（用户名，密码）
-                    Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
-                } else if (resultCode == FAIL) {
-                    Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
-                }
-                break;
+        case 1008:
+            if (resultCode == RESULT_OK) {
+                // Toast.makeText(mContext, "指纹验证成功。。。。。。",
+                // Toast.LENGTH_LONG).show();
+                Log.d("fate", "指纹验证成功");
+            } else if (resultCode == RESULT_CANCLE) {
+                // Toast.makeText(mContext, "取消了指纹验证",
+                // Toast.LENGTH_LONG).show();
+                Log.d("fate", "取消了指纹验证");
+            } else if (resultCode == RESULT_FAIL) {
+                // Toast.makeText(mContext, "指纹验证失败", Toast.LENGTH_LONG).show();
+                Log.d("fate", "指纹验证失败");
+            }
+            break;
+        case 1009:
+            String info = "";
+            if (data != null) {
+                info = data.getStringExtra("info");
+            }
+            if (resultCode == SUCCESS) {
+                // 若有指纹，则需要绑定用户信息（用户名，密码）
+                Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
+            } else if (resultCode == FAIL) {
+                Toast.makeText(mContext, info, Toast.LENGTH_SHORT).show();
+            }
+            break;
         }
     }
 
+    /** =========================================算法题============================================= **/
+    // 得到一个帕斯卡三角形
+    public int[][] generate(int numRows) {
+        int[][] arr = new int[numRows][];
+        for (int i = 0; i < numRows; i++) {
+            arr[i] = new int[i + 1];
+            arr[i][0] = 1;
+            arr[i][arr[i].length - 1] = 1;
+            for (int j = 1; j < (arr[i].length - 1); j++) {
+                arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+            }
+        }
+        return arr;
+    }
 
-    // public void showTimeDialog() {
-    // LayoutInflater inflater1 = LayoutInflater.from(MainActivity.this);
-    // final View timepickerview1 = inflater1.inflate(R.layout.timepicker,
-    // null);
-    // TextView curDate = (TextView)
-    // timepickerview1.findViewById(R.id.timePickerTextTv);
-    //
-    // ScreenInfo screenInfo1 = new ScreenInfo(MainActivity.this);
-    // wheelMain = new WheelMain(timepickerview1, true, true);
-    // wheelMain.screenheight = screenInfo1.getHeight();
-    // String time1 = txttime.getText().toString();
-    // Calendar calendar1 = Calendar.getInstance();
-    // if (JudgeDate.isDate(time1, "HH:mm")) {// yyyy-MM-dd
-    // try {
-    // calendar1.setTime(dateFormat.parse(time1));
-    // } catch (ParseException e) {
-    // // TODO Auto-generated catch block
-    // e.printStackTrace();
-    // }
-    // }
-    // int year1 = calendar1.get(Calendar.YEAR);
-    // int month1 = calendar1.get(Calendar.MONTH);
-    // int day1 = calendar1.get(Calendar.DAY_OF_MONTH);
-    // int hour1 = calendar1.get(Calendar.HOUR_OF_DAY);
-    // int minutes1 = calendar1.get(Calendar.MINUTE);
-    // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    // String dateStr = sdf.format(calendar1.getTime());
-    // curDate.setText(dateStr);
-    // // wheelMain.initDateTimePicker(year1, month1, day1,hour1,minutes1);
-    // wheelMain.initDateTimePicker(hour1, minutes1);
-    // final MyAlertDialog dialog = new
-    // MyAlertDialog(MainActivity.this).builder().setTitle("请选择活动开始时间")
-    // .setView(timepickerview1).setNegativeButton("取消", new
-    // View.OnClickListener() {
-    // @Override
-    // public void onClick(View v) {
-    //
-    // }
-    // });
-    // dialog.setPositiveButton("保存", new View.OnClickListener() {
-    // @Override
-    // public void onClick(View v) {
-    // Toast.makeText(getApplicationContext(), wheelMain.getHoursAndMins(),
-    // Toast.LENGTH_LONG).show();
-    // }
-    // });
-    // dialog.show();
-    // }
+    // 给两个有序数组，将这两个有序数组合并为一个有序数组
+    public int[] mergeArray(int a[], int b[]) {
+        int result[] = new int[a.length + b.length];
+        int i = 0;// 表示a数组
+        int j = 0;// 表示b数组
+        int k = 0;// 表示最后的结果数组
+        while (i < a.length && j < b.length) {
+            if (a[i] <= b[j]) {
+                result[k++] = a[i++];
+            } else {
+                result[k++] = b[j++];
+            }
+        }
+        while (i < a.length) {
+            result[k++] = a[i++];
+        }
+        while (j < b.length) {
+            result[k++] = b[j++];
+        }
+        return result;
+    }
 }

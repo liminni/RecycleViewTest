@@ -230,6 +230,16 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:text="ViewPager+Fragment+RecycleView"/>
+            <Button
+                android:id="@+id/btn_customerDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="自定义布局Dialog"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
