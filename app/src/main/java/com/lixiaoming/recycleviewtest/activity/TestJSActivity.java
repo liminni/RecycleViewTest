@@ -12,6 +12,7 @@ import android.webkit.ValueCallback;
 import com.lixiaoming.recycleviewtest.R;
 import com.lixiaoming.recycleviewtest.utils.MyJavascriptInterface;
 
+import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
@@ -91,9 +92,17 @@ public class TestJSActivity extends AppCompatActivity {
                 super.onPageLoadStopped(view, url, status);
             }
         });
+        XWalkPreferences.setValue("enable-javascript", true);
+        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+
+        XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, true);
+        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
+        XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
 //        webView.load("file:///android_asset/www4/index.html",null);
 //        webView.load("file:///android_asset/jsAndroid.html",null);
-        webView.load("http://10.18.20.148:8000/#/home",null);
+//        webView.load("http://10.18.20.148:8000/#/home",null);
+        String url = "https://124.127.204.135/lapp_www?username=zhuhy&password=password%401&redirectto=%2Ftodolx/category";
+        webView.load(url,null);
 
     }
 //    @Override
